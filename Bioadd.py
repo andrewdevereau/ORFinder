@@ -97,7 +97,7 @@ def translate(seq, translation_table=standard_code):  #include a translation tab
             return translation           #stop translating and return the current translation
     return translation
 
-def complement(seq, reverse=False):
+def complement(seq):
     #another method using a dict instead of if block
     seq = seq.lower()
     comp = {
@@ -107,13 +107,10 @@ def complement(seq, reverse=False):
         'c': 'g'
     }
     result = ""
-    if reverse:
-        step = -1
-    else:
-        step = 1
-    for s in seq[::step]:
+
+    for s in seq:
         result += comp[s]
     return result
 
 def reverse_complement(seq):
-    return complement(seq, reverse=True)
+    return complement(seq[::-1])
