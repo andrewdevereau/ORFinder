@@ -114,3 +114,18 @@ def complement(seq):
 
 def reverse_complement(seq):
     return complement(seq[::-1])
+
+def longORF(seq):
+    #find longest orfs in an AA sequence. No sub strings
+    result = {}
+    i = 0
+    while i < len(seq):
+        try:
+            start = seq.index("M", i)
+            end = seq.index("*", start + 1)
+        except:
+            break
+
+        result[i] = seq[start: end]
+        i = i + end + 1
+    return result
